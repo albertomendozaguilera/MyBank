@@ -1,5 +1,6 @@
 package com.alberto.bank.controller;
 
+import com.alberto.bank.dto.UserDTO;
 import com.alberto.bank.model.User;
 import com.alberto.bank.service.UserService;
 import java.util.List;
@@ -23,7 +24,7 @@ public class UserController {
      UserService userService;
  
      @RequestMapping(value = "/all", method = RequestMethod.GET)
-     public List<User> getAllUsers() {
+     public List<UserDTO> getAllUsers() {
          return userService.getAllUsers();
      }
  

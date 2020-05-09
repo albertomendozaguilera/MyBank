@@ -18,6 +18,7 @@ public class UserToUserDTOConverter {
     
     public UserDTO populate(User user){
         UserDTO userDTO = new UserDTO();
+        userDTO.setId(user.getId());
         userDTO.setName(user.getName());
         userDTO.setEmail(user.getEmail());
         userDTO.setBlacklist(isBlacklisted(user.getBlacklist()));

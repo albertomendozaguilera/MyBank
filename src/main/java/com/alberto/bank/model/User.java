@@ -25,7 +25,7 @@ public class User implements Serializable {
     @Column(name = "BLACKLIST", nullable = false,length = 1)
     private String blacklist;
     
-    protected User(){
+    public User(){
         
     }
 

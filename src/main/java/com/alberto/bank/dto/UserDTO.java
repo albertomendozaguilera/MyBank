@@ -11,6 +11,7 @@ package com.alberto.bank.dto;
  */
 public class UserDTO {
     
+    private String id;
     private String name;
     private String email;
     private boolean blacklist;
@@ -38,6 +39,13 @@ public class UserDTO {
     public void setBlacklist(boolean blacklist) {
         this.blacklist = blacklist;
     }
-    
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     
 }

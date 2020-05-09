@@ -21,6 +21,9 @@ public class UserService {
     @Autowired
     UserToUserDTOConverter userToUserDTOConverter;
     
+    @Autowired
+    UserDTOToUserConverter userDTOToUserConverter;
+    
     public List<UserDTO> getAllUsers() {
         List<UserDTO> userDTOList = new ArrayList();
         List<User> users = this.userDao.findAll();
@@ -30,7 +33,7 @@ public class UserService {
          return userDTOList;
      }
  
-     public User addUser(User user) {
-         return this.userDao.save(user);
+     public UserDTO addUser(UserDTO userDTO) {
+         return userToUserDTOConverter.populate(userDao.save(userDTOToUserConverter.populate(userDTO)));
      }
 }

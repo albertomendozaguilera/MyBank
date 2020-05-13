@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
     
     @Autowired
-     UserDao userDao;
+    UserDao userDao;
     
     @Autowired
     UserToUserDTOConverter userToUserDTOConverter;

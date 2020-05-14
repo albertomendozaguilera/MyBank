@@ -5,7 +5,7 @@
  */
 package com.alberto.bank.service;
 
-import com.alberto.bank.dto.BankAccountModel;
+import com.alberto.bank.dto.AccountDTO;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,12 +15,12 @@ import org.springframework.stereotype.Service;
 @Service("bankAccountInfoService")
 public class BankAccountInfoService {
     
-    public BankAccountModel getBankAccount(String user){
+    public AccountDTO getBankAccount(String user){
         
         //consulta a base de datos 
         // consulto a mysql y vuelcas esa informacion para crear un objeto de tipo BankAccountDAO
         // BankAccountDAOToBankAccountModelConverter
-        return new BankAccountModel("000124", user, 3450.74d);        
+        return new AccountDTO("000124", user, 3450.74d);        
     }
     
 }

@@ -27,4 +27,44 @@ public class Account implements Serializable {
     @Column (name = "USERID")
     private String userID;
     
+    @Column(name = "NAME", nullable = false, length = 100)
+    private String name;
+    
+    @Column(name = "BALANCE", nullable = false, length = 12)
+    private double balance;
+
+    public String getIban() {
+        return iban;
+    }
+
+    public void setIban(String iban) {
+        this.iban = iban;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+    
+    
+    
 }

@@ -6,22 +6,26 @@ package com.alberto.bank.dto;
  */
 public class AccountDTO {
     
-    private String id;
+    private String userId;
+    private String iban;
     private String name;
-    private double money;
+    private double balance;
 
-    public AccountDTO(String id, String name, double money) {
-        this.id = id;
-        this.name = name;
-        this.money = money;
+    
+    public String getUserId() {
+        return userId;
     }
 
-    public String getId() {
-        return id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getIban() {
+        return iban;
+    }
+
+    public void setIban(String iban) {
+        this.iban = iban;
     }
 
     public String getName() {
@@ -32,14 +36,14 @@ public class AccountDTO {
         this.name = name;
     }
 
-    public double getMoney() {
-        return money;
+    public double getBalance() {
+        return balance;
     }
 
-    public void setMoney(double money) {
-        this.money = money;
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
     
-        
+    
     
 }

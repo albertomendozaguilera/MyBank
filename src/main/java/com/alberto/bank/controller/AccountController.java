@@ -1,7 +1,7 @@
 package com.alberto.bank.controller;
 
-import com.alberto.bank.dto.UserDTO;
-import com.alberto.bank.service.UserService;
+import com.alberto.bank.dto.AccountDTO;
+import com.alberto.bank.service.AccountService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -16,21 +16,20 @@ import org.springframework.web.bind.annotation.RestController;
  * @author wutuf
  */
 @RestController
-@RequestMapping("/user")
-public class UserController {
+public class AccountController {
     
-     @Autowired
-     UserService userService;
- 
-     @RequestMapping(value = "/all", method = RequestMethod.GET)
-     public List<UserDTO> getAllUsers() {
-         return userService.getAllUsers();
+    @Autowired
+    AccountService accountService;
+    
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+     public List<AccountDTO> getAllUsers() {
+         return accountService.getAllAccounts();
      }
  
-     @RequestMapping(value = "/adduser", method = RequestMethod.POST,
+     @RequestMapping(value = "/addaccount", method = RequestMethod.POST,
              consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
      @ResponseBody()
-     public UserDTO addNewUser(@RequestBody UserDTO userDTO) {
-         return this.userService.addUser(userDTO);
+     public AccountDTO addNewUser(@RequestBody AccountDTO accountDTO) {
+         return this.accountService.addAccount(accountDTO);
      }
 }

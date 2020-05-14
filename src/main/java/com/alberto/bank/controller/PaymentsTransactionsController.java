@@ -23,14 +23,14 @@ public class PaymentsTransactionsController {
     PTransactionsService pTransactionsService;
     
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-     public List<PaymentTransactionsDTO> getAllAccounts() {
+     public List<PaymentTransactionsDTO> getAllTransactions() {
          return pTransactionsService.getAllTransactions();
      }
  
-     @RequestMapping(value = "/addaccount", method = RequestMethod.POST,
+     @RequestMapping(value = "/addtransaction", method = RequestMethod.POST,
              consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
      @ResponseBody()
-     public PaymentTransactionsDTO addNewUser(@RequestBody PaymentTransactionsDTO transactionDTO) {
+     public PaymentTransactionsDTO addNewTransaction(@RequestBody PaymentTransactionsDTO transactionDTO) {
          return this.pTransactionsService.addTransactions(transactionDTO);
      }
 }

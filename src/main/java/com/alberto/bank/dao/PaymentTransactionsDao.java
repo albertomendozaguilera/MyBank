@@ -1,14 +1,14 @@
 package com.alberto.bank.dao;
 
-import com.alberto.bank.model.Account;
+import com.alberto.bank.model.PaymentTransactions;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author Sergio
+ * @author wutuf
  */
 @Repository
-public interface AccountDao extends JpaRepository<Account, Integer>{
+public interface PaymentTransactionsDao extends JpaRepository<PaymentTransactions, Integer>{
     
 }

@@ -15,15 +15,13 @@ import javax.persistence.*;
 @Entity
 @Table(name="ACCOUNTS")
 public class Account implements Serializable {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USERID")
+    private User user;
     
     @Column(name = "IBAN")
     @Id
     private String iban;
-    
-    @ManyToOne
-    @JoinColumn(name = "ID")
-    @Column (name = "USERID")
-    private String userID;
     
     @Column(name = "NAME", nullable = false, length = 100)
     private String name;
@@ -39,12 +37,12 @@ public class Account implements Serializable {
         this.iban = iban;
     }
 
-    public String getUserID() {
-        return userID;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getName() {

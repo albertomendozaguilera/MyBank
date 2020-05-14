@@ -1,23 +1,24 @@
 package com.alberto.bank.dto;
 
+
 /**
  *
  * @author wutuf
  */
 public class AccountDTO {
     
-    private String userId;
+    private UserDTO userDTO;
     private String iban;
     private String name;
     private double balance;
 
     
-    public String getUserId() {
-        return userId;
+    public UserDTO getUserDTO() {
+        return userDTO;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUserDTO(UserDTO userDTO) {
+        this.userDTO = userDTO;
     }
 
     public String getIban() {

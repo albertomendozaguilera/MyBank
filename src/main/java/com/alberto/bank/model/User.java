@@ -1,6 +1,7 @@
 package com.alberto.bank.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.*;
 
 
@@ -24,6 +25,9 @@ public class User implements Serializable {
     
     @Column(name = "BLACKLIST", nullable = false,length = 1)
     private String blacklist;
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Account> accounts;
     
     public User(){
         
@@ -60,6 +64,15 @@ public class User implements Serializable {
     public void setBlacklist(String blacklist) {
         this.blacklist = blacklist;
     }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+    }
+    
     
     
 }

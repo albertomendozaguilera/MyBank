@@ -2,16 +2,18 @@ package com.alberto.bank.service;
 
 import com.alberto.bank.dto.PaymentTransactionsDTO;
 import com.alberto.bank.model.PaymentTransactions;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author wutuf
  */
+@Service
 public class PTransactiosToPTransactionsDTOConverter {
     public PaymentTransactionsDTO populate(PaymentTransactions pTransactions){
         PaymentTransactionsDTO pTransactionsDTO = new PaymentTransactionsDTO();
         pTransactionsDTO.setId(pTransactions.getId());
-        pTransactionsDTO.setIban(pTransactions.getIban());
+        //pTransactionsDTO.setIban(pTransactions.getIban());
         pTransactionsDTO.setQuantity(pTransactions.getQuantity());
         pTransactionsDTO.setConcept(pTransactions.getConcept());
         pTransactionsDTO.setDatetime(pTransactions.getDatetime());

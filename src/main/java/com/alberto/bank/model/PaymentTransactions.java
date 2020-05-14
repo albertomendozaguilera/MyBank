@@ -17,10 +17,9 @@ public class PaymentTransactions implements Serializable{
     @Id
     private String id;
     
-    @ManyToOne
-    @JoinColumn(name = "IBAN")
-    @Column(name = "ACCOUNT_IBAN", nullable = false, length = 24)
-    private String iban;
+    @OneToMany //TODO
+    @JoinColumn(name = "ACCOUNT_IBAN", nullable = false)
+    private Account iban;
     
     @Column(name = "QUANTITY", nullable = false, length = 9)
     private double quantity;
@@ -49,11 +48,11 @@ public class PaymentTransactions implements Serializable{
         this.id = id;
     }
 
-    public String getIban() {
+    public Account getIban() {
         return iban;
     }
 
-    public void setIban(String iban) {
+    public void setIban(Account iban) {
         this.iban = iban;
     }
 

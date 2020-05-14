@@ -13,7 +13,7 @@ public class PTransactionsDTOToPTransactionsConverter {
     public PaymentTransactions populate(PaymentTransactionsDTO pTransactionsDTO){
         PaymentTransactions pTransactions = new PaymentTransactions();
         pTransactions.setId(pTransactionsDTO.getId());
-        pTransactions.setIban(pTransactionsDTO.getIban());
+        //pTransactions.setIban(pTransactionsDTO.getIban());
         pTransactions.setQuantity(pTransactionsDTO.getQuantity());
         pTransactions.setConcept(pTransactionsDTO.getConcept());
         pTransactions.setDatetime(pTransactionsDTO.getDatetime());

@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,9 +23,9 @@ public class AccountController {
     @Autowired
     AccountService accountService;
     
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
-     public List<AccountDTO> getAllAccounts() {
-         return accountService.getAllAccounts();
+    @RequestMapping(value = "/accountsfromuserid", method = RequestMethod.GET)
+     public List<AccountDTO> getAccountsFromUserId(@RequestParam(value = "userId") String userId) {
+         return accountService.getAccountsByUserId(userId);
      }
  
      @RequestMapping(value = "/addaccount", method = RequestMethod.POST,

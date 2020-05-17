@@ -1,4 +1,4 @@
-package com.alberto.bank.model;
+package com.alberto.bank.dao;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -11,15 +11,15 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="PAYMENT_TRANSACTIONS")    
-public class PaymentTransactions implements Serializable{
+public class PaymentTransactionsDAO implements Serializable{
         
     @Column(name = "ID")
     @Id
     private String id;
     
-    @OneToMany //TODO
+    //@OneToMany //TODO
     @JoinColumn(name = "ACCOUNT_IBAN", nullable = false)
-    private Account iban;
+    private AccountDAO iban;
     
     @Column(name = "QUANTITY", nullable = false, length = 9)
     private double quantity;
@@ -48,11 +48,11 @@ public class PaymentTransactions implements Serializable{
         this.id = id;
     }
 
-    public Account getIban() {
+    public AccountDAO getIban() {
         return iban;
     }
 
-    public void setIban(Account iban) {
+    public void setIban(AccountDAO iban) {
         this.iban = iban;
     }
 

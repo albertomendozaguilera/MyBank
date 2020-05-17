@@ -1,8 +1,8 @@
 package com.alberto.bank.service;
 
-import com.alberto.bank.dao.PaymentTransactionsDao;
+import com.alberto.bank.repository.PaymentTransactionsRepository;
 import com.alberto.bank.dto.PaymentTransactionsDTO;
-import com.alberto.bank.model.PaymentTransactions;
+import com.alberto.bank.dao.PaymentTransactionsDAO;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class PTransactionsService {
     
     @Autowired
-    PaymentTransactionsDao paymentTransactionsDao;
+    PaymentTransactionsRepository paymentTransactionsRepository;
     
     @Autowired
     PTransactiosToPTransactionsDTOConverter pTransactiosToPTransactionsDTOConverter;
@@ -27,7 +27,7 @@ public class PTransactionsService {
     
     public List<PaymentTransactionsDTO> getAllTransactions() {
         List<PaymentTransactionsDTO> pTransactionsDTOList = new ArrayList();
-        List<PaymentTransactions> pTransactions = this.paymentTransactionsDao.findAll();
+        List<PaymentTransactionsDAO> pTransactions = this.paymentTransactionsRepository.findAll();
         pTransactions.forEach((user) -> {
             pTransactionsDTOList.add(pTransactiosToPTransactionsDTOConverter.populate(user));
         });
@@ -35,6 +35,6 @@ public class PTransactionsService {
      }
  
      public PaymentTransactionsDTO addTransactions(PaymentTransactionsDTO pTransactionsDTO) {
-         return pTransactiosToPTransactionsDTOConverter.populate(paymentTransactionsDao.save(pTransactionsDTOToPTransactionsConverter.populate(pTransactionsDTO)));
+         return pTransactiosToPTransactionsDTOConverter.populate(paymentTransactionsRepository.save(pTransactionsDTOToPTransactionsConverter.populate(pTransactionsDTO)));
      }
 }

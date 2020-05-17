@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.alberto.bank.model;
+package com.alberto.bank.dao;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -14,10 +14,10 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="ACCOUNTS")
-public class Account implements Serializable {
+public class AccountDAO implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USERID")
-    private User user;
+    private UserDAO userDAO;
     
     @Column(name = "IBAN")
     @Id
@@ -37,12 +37,12 @@ public class Account implements Serializable {
         this.iban = iban;
     }
 
-    public User getUser() {
-        return user;
+    public UserDAO getUserDAO() {
+        return userDAO;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserDAO(UserDAO userDAO) {
+        this.userDAO = userDAO;
     }
 
     public String getName() {

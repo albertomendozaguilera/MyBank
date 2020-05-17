@@ -1,7 +1,7 @@
 package com.alberto.bank.service;
 
 import com.alberto.bank.dto.UserDTO;
-import com.alberto.bank.model.User;
+import com.alberto.bank.dao.UserDAO;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,12 +11,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserToUserDTOConverter {
     
-    public UserDTO populate(User user){
+    public UserDTO populate(UserDAO userDAO){
         UserDTO userDTO = new UserDTO();
-        userDTO.setId(user.getId());
-        userDTO.setName(user.getName());
-        userDTO.setEmail(user.getEmail());
-        userDTO.setBlacklist(isBlacklisted(user.getBlacklist()));
+        userDTO.setId(userDAO.getId());
+        userDTO.setName(userDAO.getName());
+        userDTO.setEmail(userDAO.getEmail());
+        userDTO.setBlacklist(isBlacklisted(userDAO.getBlacklist()));
         return userDTO;
     } 
     

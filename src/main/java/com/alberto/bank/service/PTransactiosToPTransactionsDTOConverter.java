@@ -1,7 +1,7 @@
 package com.alberto.bank.service;
 
 import com.alberto.bank.dto.PaymentTransactionsDTO;
-import com.alberto.bank.model.PaymentTransactions;
+import com.alberto.bank.dao.PaymentTransactionsDAO;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class PTransactiosToPTransactionsDTOConverter {
-    public PaymentTransactionsDTO populate(PaymentTransactions pTransactions){
+    public PaymentTransactionsDTO populate(PaymentTransactionsDAO pTransactions){
         PaymentTransactionsDTO pTransactionsDTO = new PaymentTransactionsDTO();
         pTransactionsDTO.setId(pTransactions.getId());
         //pTransactionsDTO.setIban(pTransactions.getIban());

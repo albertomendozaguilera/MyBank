@@ -1,4 +1,4 @@
-package com.alberto.bank.model;
+package com.alberto.bank.dao;
 
 import java.io.Serializable;
 import java.util.List;
@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "USERS")
-public class User implements Serializable {
+public class UserDAO implements Serializable {
 
     @Column(name = "ID")
     @Id
@@ -27,9 +27,9 @@ public class User implements Serializable {
     private String blacklist;
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    private List<Account> accounts;
+    private List<AccountDAO> accountDAOS;
     
-    public User(){
+    public UserDAO(){
         
     }
 
@@ -65,12 +65,12 @@ public class User implements Serializable {
         this.blacklist = blacklist;
     }
 
-    public List<Account> getAccounts() {
-        return accounts;
+    public List<AccountDAO> getAccountDAOS() {
+        return accountDAOS;
     }
 
-    public void setAccounts(List<Account> accounts) {
-        this.accounts = accounts;
+    public void setAccountDAOS(List<AccountDAO> accountDAOS) {
+        this.accountDAOS = accountDAOS;
     }
     
     

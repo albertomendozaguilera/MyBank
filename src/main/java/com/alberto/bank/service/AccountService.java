@@ -1,14 +1,13 @@
 package com.alberto.bank.service;
 
-import com.alberto.bank.dao.AccountDao;
+import com.alberto.bank.repository.AccountRepository;
 import com.alberto.bank.dto.AccountDTO;
-import com.alberto.bank.model.Account;
-import com.alberto.bank.model.User;
+import com.alberto.bank.dao.AccountDAO;
+import com.alberto.bank.dao.UserDAO;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +19,7 @@ import org.springframework.stereotype.Service;
 public class AccountService {
     
     @Autowired
-    AccountDao accountDao;
+    AccountRepository accountRepository;
     
     @Autowired
     AccountToAccountDTOConverter accountToAccountDTOConverter;
@@ -30,29 +29,29 @@ public class AccountService {
     
     public List<AccountDTO> getAllAccounts() {
         List<AccountDTO> accountDTOList = new ArrayList();
-        List<Account> accounts = this.accountDao.findAll();
-        accounts.forEach((account) -> {
+        List<AccountDAO> accountDAOS = this.accountRepository.findAll();
+        accountDAOS.forEach((account) -> {
             accountDTOList.add(accountToAccountDTOConverter.populate(account));
         });
          return accountDTOList;
      }
     
     public List<AccountDTO> getAccountsByUserId(String userId){
-        List<Account> accounts;
+        List<AccountDAO> accountDAOS;
         List<AccountDTO> accountsList = new ArrayList();
         
         ExampleMatcher caseInsensitiveExampleMatcher = ExampleMatcher.matchingAll().withIgnoreCase();
-        Account account = new Account();
-        User user = new User();
-        user.setId(userId);
-        account.setUser(user);
+        AccountDAO accountDAO = new AccountDAO();
+        UserDAO userDAO = new UserDAO();
+        userDAO.setId(userId);
+        accountDAO.setUserDAO(userDAO);
 
-        //Example<Account> example = Example.of(account, caseInsensitiveExampleMatcher);
+        //Example<AccountDAO> example = Example.of(accountDAO, caseInsensitiveExampleMatcher);
         
-        //accounts = (List<Account>) this.accountDao.findAll(example);
-        accounts =  this.accountDao.findByUserId(user.getId());
+        //accountDAOS = (List<AccountDAO>) this.accountDao.findAll(example);
+        accountDAOS =  this.accountRepository.findByUserId(userDAO.getId());
         
-        accounts.forEach((accountItem) -> {
+        accountDAOS.forEach((accountItem) -> {
             accountsList.add(accountToAccountDTOConverter.populate(accountItem));
         });
         
@@ -60,7 +59,7 @@ public class AccountService {
     }
  
      public AccountDTO addAccount(AccountDTO accountDTO) {
-         return accountToAccountDTOConverter.populate(accountDao.save(accountDTOToAccountConverter.populate(accountDTO)));
+         return accountToAccountDTOConverter.populate(accountRepository.save(accountDTOToAccountConverter.populate(accountDTO)));
      }
     
 }

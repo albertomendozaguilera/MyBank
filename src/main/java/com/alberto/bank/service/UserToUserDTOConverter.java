@@ -1,7 +1,7 @@
 package com.alberto.bank.service;
 
 import com.alberto.bank.dto.UserDTO;
-import com.alberto.bank.dao.UserDAO;
+import com.alberto.bank.dao.UserDao;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserToUserDTOConverter {
     
-    public UserDTO populate(UserDAO userDAO){
+    public UserDTO populate(UserDao userDAO){
         UserDTO userDTO = new UserDTO();
         userDTO.setId(userDAO.getId());
         userDTO.setName(userDAO.getName());

@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "USERS")
-public class UserDAO implements Serializable {
+public class UserDao implements Serializable {
 
     @Column(name = "ID")
     @Id
@@ -29,7 +29,7 @@ public class UserDAO implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<AccountDAO> accountDAOS;
     
-    public UserDAO(){
+    public UserDao(){
         
     }
 

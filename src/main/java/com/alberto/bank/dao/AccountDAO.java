@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class AccountDAO implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USERID")
-    private UserDAO userDAO;
+    private UserDao userDAO;
     
     @Column(name = "IBAN")
     @Id
@@ -37,11 +37,11 @@ public class AccountDAO implements Serializable {
         this.iban = iban;
     }
 
-    public UserDAO getUserDAO() {
+    public UserDao getUserDAO() {
         return userDAO;
     }
 
-    public void setUserDAO(UserDAO userDAO) {
+    public void setUserDAO(UserDao userDAO) {
         this.userDAO = userDAO;
     }
 

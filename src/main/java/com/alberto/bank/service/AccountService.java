@@ -3,7 +3,7 @@ package com.alberto.bank.service;
 import com.alberto.bank.repository.AccountRepository;
 import com.alberto.bank.dto.AccountDTO;
 import com.alberto.bank.dao.AccountDAO;
-import com.alberto.bank.dao.UserDAO;
+import com.alberto.bank.dao.UserDao;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +42,7 @@ public class AccountService {
         
         ExampleMatcher caseInsensitiveExampleMatcher = ExampleMatcher.matchingAll().withIgnoreCase();
         AccountDAO accountDAO = new AccountDAO();
-        UserDAO userDAO = new UserDAO();
+        UserDao userDAO = new UserDao();
         userDAO.setId(userId);
         accountDAO.setUserDAO(userDAO);
 

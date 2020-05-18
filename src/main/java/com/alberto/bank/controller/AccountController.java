@@ -23,7 +23,7 @@ public class AccountController {
     @Autowired
     AccountService accountService;
     
-    @RequestMapping(value = "/accountsfromuserid", method = RequestMethod.GET)
+    @RequestMapping(value = "/allfromuserid", method = RequestMethod.GET)
      public List<AccountDTO> getAccountsFromUserId(@RequestParam(value = "userId") String userId) {
          return accountService.getAccountsByUserId(userId);
      }

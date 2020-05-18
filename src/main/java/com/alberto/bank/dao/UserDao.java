@@ -26,7 +26,7 @@ public class UserDao implements Serializable {
     @Column(name = "BLACKLIST", nullable = false,length = 1)
     private String blacklist;
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userDAO")
     private List<AccountDAO> accountDAOS;
     
     public UserDao(){

@@ -49,7 +49,7 @@ public class AccountService {
         //Example<AccountDAO> example = Example.of(accountDAO, caseInsensitiveExampleMatcher);
         
         //accountDAOS = (List<AccountDAO>) this.accountDao.findAll(example);
-        accountDAOS =  this.accountRepository.findByUserId(userDAO.getId());
+        accountDAOS =  this.accountRepository.findByUserDAO(userDAO.getId());
         
         accountDAOS.forEach((accountItem) -> {
             accountsList.add(accountToAccountDTOConverter.populate(accountItem));

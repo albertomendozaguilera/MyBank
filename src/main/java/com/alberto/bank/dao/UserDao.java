@@ -28,10 +28,8 @@ public class UserDao implements Serializable {
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "userDAO")
     private List<AccountDAO> accountDAOS;
-    
-    public UserDao(){
-        
-    }
+
+
 
     public String getId() {
         return id;

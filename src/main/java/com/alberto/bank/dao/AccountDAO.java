@@ -6,6 +6,7 @@
 package com.alberto.bank.dao;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -28,6 +29,9 @@ public class AccountDAO implements Serializable {
     
     @Column(name = "BALANCE", nullable = false, length = 12)
     private double balance;
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "accountDAO")
+    private List<PaymentTransactionsDAO> transactionsDAOS;
 
     public String getIban() {
         return iban;
@@ -60,7 +64,8 @@ public class AccountDAO implements Serializable {
     public void setBalance(double balance) {
         this.balance = balance;
     }
-    
-    
-    
+
+    public List<PaymentTransactionsDAO> getTransactionsDAOS() { return transactionsDAOS; }
+
+    public void setTransactionsDAOS(List<PaymentTransactionsDAO> transactionsDAOS) { this.transactionsDAOS = transactionsDAOS; }
 }

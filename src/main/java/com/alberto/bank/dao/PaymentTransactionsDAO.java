@@ -17,9 +17,9 @@ public class PaymentTransactionsDAO implements Serializable{
     @Id
     private String id;
     
-    //@OneToMany //TODO
+    @ManyToOne (fetch = FetchType.LAZY)//TODO
     @JoinColumn(name = "ACCOUNT_IBAN", nullable = false)
-    private AccountDAO iban;
+    private AccountDAO accountDAO;
     
     @Column(name = "QUANTITY", nullable = false, length = 9)
     private double quantity;
@@ -48,12 +48,12 @@ public class PaymentTransactionsDAO implements Serializable{
         this.id = id;
     }
 
-    public AccountDAO getIban() {
-        return iban;
+    public AccountDAO getAccountDao() {
+        return accountDAO;
     }
 
-    public void setIban(AccountDAO iban) {
-        this.iban = iban;
+    public void setAccountDao(AccountDAO iban) {
+        this.accountDAO = iban;
     }
 
     public double getQuantity() {

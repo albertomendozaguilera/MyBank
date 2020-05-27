@@ -30,7 +30,7 @@ public class UserService {
         userDaos.forEach((user) -> {
             userDTOList.add(userToUserDTOConverter.populate(user));
         });
-         return userDTOList;
+        return userDTOList;
      }
  
      public UserDTO addUser(UserDTO userDTO) {

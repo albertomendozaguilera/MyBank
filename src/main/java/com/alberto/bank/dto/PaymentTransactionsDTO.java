@@ -12,7 +12,7 @@ public class PaymentTransactionsDTO {
     private String iban;
     private double quantity;
     private String concept;
-    private Date datetime;
+    private String datetime;
     private String destinyAccount;
     private String originAccount;
     private String beneficiary;
@@ -49,11 +49,11 @@ public class PaymentTransactionsDTO {
         this.concept = concept;
     }
 
-    public Date getDatetime() {
+    public String getDatetime() {
         return datetime;
     }
 
-    public void setDatetime(Date datetime) {
+    public void setDatetime(String datetime) {
         this.datetime = datetime;
     }
 

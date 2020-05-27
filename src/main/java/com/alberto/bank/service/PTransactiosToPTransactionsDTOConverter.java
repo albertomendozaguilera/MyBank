@@ -10,13 +10,13 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class PTransactiosToPTransactionsDTOConverter {
-    public PaymentTransactionsDTO populate(PaymentTransactionsDAO pTransactions){
+    public static PaymentTransactionsDTO populate(PaymentTransactionsDAO pTransactions){
         PaymentTransactionsDTO pTransactionsDTO = new PaymentTransactionsDTO();
         pTransactionsDTO.setId(pTransactions.getId());
         //pTransactionsDTO.setIban(pTransactions.getIban());
         pTransactionsDTO.setQuantity(pTransactions.getQuantity());
         pTransactionsDTO.setConcept(pTransactions.getConcept());
-        pTransactionsDTO.setDatetime(pTransactions.getDatetime());
+        pTransactionsDTO.setDatetime(String.valueOf(pTransactions.getDatetime()));
         pTransactionsDTO.setDestinyAccount(pTransactions.getDestinyAccount());
         pTransactionsDTO.setOriginAccount(pTransactions.getOriginAccount());
         pTransactionsDTO.setBeneficiary(pTransactions.getBeneficiary());

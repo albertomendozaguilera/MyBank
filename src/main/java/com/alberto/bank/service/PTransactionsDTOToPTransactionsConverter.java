@@ -4,6 +4,8 @@ import com.alberto.bank.dto.PaymentTransactionsDTO;
 import com.alberto.bank.dao.PaymentTransactionsDAO;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+
 /**
  *
  * @author wutuf
@@ -16,7 +18,7 @@ public class PTransactionsDTOToPTransactionsConverter {
         //pTransactions.setIban(pTransactionsDTO.getIban());
         pTransactions.setQuantity(pTransactionsDTO.getQuantity());
         pTransactions.setConcept(pTransactionsDTO.getConcept());
-        pTransactions.setDatetime(pTransactionsDTO.getDatetime());
+        pTransactions.setDatetime(Date.valueOf(pTransactionsDTO.getDatetime()));
         pTransactions.setDestinyAccount(pTransactionsDTO.getDestinyAccount());
         pTransactions.setOriginAccount(pTransactionsDTO.getOriginAccount());
         pTransactions.setBeneficiary(pTransactionsDTO.getBeneficiary());

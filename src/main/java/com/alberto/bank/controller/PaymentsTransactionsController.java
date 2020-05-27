@@ -1,15 +1,12 @@
 package com.alberto.bank.controller;
 
 import com.alberto.bank.dto.PaymentTransactionsDTO;
-import com.alberto.bank.service.PTransactionsService;
+
 import java.util.List;
+
+import com.alberto.bank.service.PaymentTransactionsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *
@@ -20,17 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class PaymentsTransactionsController {
     
     @Autowired
-    PTransactionsService pTransactionsService;
+    PaymentTransactionsService paymentTransactionsService;
     
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
-     public List<PaymentTransactionsDTO> getAllTransactions() {
-         return pTransactionsService.getAllTransactions();
+    @RequestMapping(value = "/myaccount", method = RequestMethod.GET)
+     public List<PaymentTransactionsDTO> getTransactionsByIBAN(@RequestParam(value = "userId") String iban) {
+         return paymentTransactionsService.getTransactionsByIBAN(iban);
      }
- 
-     @RequestMapping(value = "/addtransaction", method = RequestMethod.POST,
-             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-     @ResponseBody()
-     public PaymentTransactionsDTO addNewTransaction(@RequestBody PaymentTransactionsDTO transactionDTO) {
-         return this.pTransactionsService.addTransactions(transactionDTO);
-     }
+
 }

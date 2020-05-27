@@ -10,11 +10,9 @@ import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author Sergio
+ * @author wutuf
  */
 @Repository
 public interface AccountRepository extends JpaRepository<AccountDAO, Integer>{
-    
-    //List<Customer> findByName(String name);
     List<AccountDAO> findByUserDAO(UserDao userId);
 }

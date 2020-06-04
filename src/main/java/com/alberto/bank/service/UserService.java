@@ -32,6 +32,26 @@ public class UserService {
         });
         return userDTOList;
      }
+
+
+     public List<UserDTO> getUserById(String id) {
+
+         List<UserDao> userDAOS;
+         List<UserDTO> userDTOList = new ArrayList();
+         UserDTO user = new UserDTO();
+
+         userDAOS =  this.userRepository.findAll();
+
+         for (UserDao u : userDAOS){
+             if(u.getId().equals(id)){
+                 user = userToUserDTOConverter.populate(u);
+             }
+         }
+
+         userDTOList.add(user);
+
+         return userDTOList;
+     }
  
      public UserDTO addUser(UserDTO userDTO) {
          return userToUserDTOConverter.populate(userRepository.save(userDTOToUserConverter.populate(userDTO)));

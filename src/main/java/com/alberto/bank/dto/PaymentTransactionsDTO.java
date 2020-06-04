@@ -9,7 +9,7 @@ import java.sql.Date;
 public class PaymentTransactionsDTO {
     
     private String id;
-    private String iban;
+    private AccountDTO iban;
     private double quantity;
     private String concept;
     private String datetime;
@@ -25,11 +25,11 @@ public class PaymentTransactionsDTO {
         this.id = id;
     }
 
-    public String getIban() {
+    public AccountDTO getIban() {
         return iban;
     }
 
-    public void setIban(String iban) {
+    public void setIban(AccountDTO iban) {
         this.iban = iban;
     }
 

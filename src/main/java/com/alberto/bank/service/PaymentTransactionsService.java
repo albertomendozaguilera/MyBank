@@ -48,7 +48,7 @@ public class PaymentTransactionsService {
         transactionsDAOS =  this.transactionsRepository.findByAccountDAO(accountDAO);
 
         transactionsDAOS.forEach((transactionItem) -> {
-            transactionsList.add(PTransactiosToPTransactionsDTOConverter.populate(transactionItem));
+            transactionsList.add(pTransactiosToPTransactionsDTOConverter.populate(transactionItem));
         });
 
         return transactionsList;

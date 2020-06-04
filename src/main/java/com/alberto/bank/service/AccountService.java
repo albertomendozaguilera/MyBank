@@ -40,11 +40,11 @@ public class AccountService {
         List<AccountDAO> accountDAOS;
         List<AccountDTO> accountsList = new ArrayList();
         
-        ExampleMatcher caseInsensitiveExampleMatcher = ExampleMatcher.matchingAll().withIgnoreCase();
-        AccountDAO accountDAO = new AccountDAO();
+        //ExampleMatcher caseInsensitiveExampleMatcher = ExampleMatcher.matchingAll().withIgnoreCase();
+        //AccountDAO accountDAO = new AccountDAO();
         UserDao userDAO = new UserDao();
         userDAO.setId(userId);
-        accountDAO.setUserDAO(userDAO);
+        //accountDAO.setUserDAO(userDAO);
 
         //Example<AccountDAO> example = Example.of(accountDAO, caseInsensitiveExampleMatcher);
         

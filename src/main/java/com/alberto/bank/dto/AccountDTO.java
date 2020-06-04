@@ -1,6 +1,8 @@
 package com.alberto.bank.dto;
 
 
+import java.util.List;
+
 /**
  *
  * @author wutuf
@@ -11,6 +13,7 @@ public class AccountDTO {
     private String iban;
     private String name;
     private double balance;
+    private List<PaymentTransactionsDTO> transactionsDTOList;
 
     
     public UserDTO getUserDTO() {
@@ -44,7 +47,12 @@ public class AccountDTO {
     public void setBalance(double balance) {
         this.balance = balance;
     }
-    
-    
-    
+
+    public List<PaymentTransactionsDTO> getTransactionsDTOList() {
+        return transactionsDTOList;
+    }
+
+    public void setTransactionsDTOList(List<PaymentTransactionsDTO> transactionsDTOList) {
+        this.transactionsDTOList = transactionsDTOList;
+    }
 }

@@ -19,7 +19,7 @@ public class UserController {
      UserService userService;
  
      @RequestMapping(value = "/byid", method = RequestMethod.GET)
-     public List<UserDTO> getUserFromId(@RequestParam(value = "userId") String userId) {
+     public UserDTO getUserFromId(@RequestParam(value = "userId") String userId) {
          return userService.getUserById(userId);
      }
  

@@ -26,14 +26,6 @@ public class PaymentTransactionsService {
     @Autowired
     PTransactionsDTOToPTransactionsConverter pTransactionsDTOToPTransactionsConverter;
 
-    /*public List<PaymentTransactionsDTO> getAllAccounts() {
-        List<PaymentTransactionsDTO> transactionsDTOList = new ArrayList();
-        List<PaymentTransactionsDAO> transactionsDAOS = this.transactionsRepository.findAll();
-        transactionsDAOS.forEach((transaction) -> {
-            transactionsDTOList.add(pTransactiosToPTransactionsDTOConverter.populate(transaction));
-        });
-        return transactionsDTOList;
-    }*/
 
     public List<PaymentTransactionsDTO> getTransactionsByIBAN(String iban){
         List<PaymentTransactionsDAO> transactionsDAOS;
@@ -47,9 +39,7 @@ public class PaymentTransactionsService {
 
         transactionsDAOS =  this.transactionsRepository.findByAccountDAO(accountDAO);
 
-        transactionsDAOS.forEach((transactionItem) -> {
-            transactionsList.add(pTransactiosToPTransactionsDTOConverter.populate(transactionItem));
-        });
+        transactionsDAOS.forEach((transactionItem) -> transactionsList.add(pTransactiosToPTransactionsDTOConverter.populate(transactionItem)));
 
         return transactionsList;
     }

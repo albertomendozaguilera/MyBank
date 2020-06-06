@@ -26,24 +26,24 @@ public class AccountToAccountDTOConverter {
     public AccountDTO populate(AccountDAO accountDAO){
         AccountDTO accountDTO = new AccountDTO();
         accountDTO.setUserDTO(userToUserDTOConverter.userToUserDTO(accountDAO.getUserDAO()));
+        populateFields(accountDAO, accountDTO);
+        return accountDTO;
+    }
+
+    private void populateFields(AccountDAO accountDAO, AccountDTO accountDTO) {
         accountDTO.setIban(accountDAO.getIban());
         accountDTO.setName(accountDAO.getName());
         accountDTO.setBalance(accountDAO.getBalance());
-        accountDTO.setTransactionsDTOList(convert(accountDAO.getTransactionsDAOS()));
-        return accountDTO;
+        accountDTO.setTransactionsDTOList(convertPaymentTrasnsactionsDAOsToPaymentTransactionsDTO(accountDAO.getTransactionsDAOS()));
     }
 
     public AccountDTO accountToAccountDTO(AccountDAO accountDAO){
         AccountDTO accountDTO = new AccountDTO();
-        //accountDTO.setUserDTO(userToUserDTOConverter.userToUserDTO(accountDAO.getUserDAO()));
-        accountDTO.setIban(accountDAO.getIban());
-        accountDTO.setName(accountDAO.getName());
-        accountDTO.setBalance(accountDAO.getBalance());
-        accountDTO.setTransactionsDTOList(convert(accountDAO.getTransactionsDAOS()));
+        populateFields(accountDAO, accountDTO);
         return accountDTO;
     }
 
-    private List<PaymentTransactionsDTO> convert(List<PaymentTransactionsDAO> list) {
+    private List<PaymentTransactionsDTO> convertPaymentTrasnsactionsDAOsToPaymentTransactionsDTO(List<PaymentTransactionsDAO> list) {
         List<PaymentTransactionsDTO> transactionstDtoList = new ArrayList();
         for (PaymentTransactionsDAO pDao : list) {
             transactionstDtoList.add(pTransactiosToPTransactionsDTOConverter.transactionsToTransactiosDTO(pDao));

@@ -39,17 +39,10 @@ public class AccountService {
     public List<AccountDTO> getAccountsByUserId(String userId){
         List<AccountDAO> accountDAOS;
         List<AccountDTO> accountsList = new ArrayList();
-        
-        //ExampleMatcher caseInsensitiveExampleMatcher = ExampleMatcher.matchingAll().withIgnoreCase();
-        //AccountDAO accountDAO = new AccountDAO();
+
         UserDao userDAO = new UserDao();
         userDAO.setId(userId);
-        //accountDAO.setUserDAO(userDAO);
 
-        //Example<AccountDAO> example = Example.of(accountDAO, caseInsensitiveExampleMatcher);
-        
-        //accountDAOS = (List<AccountDAO>) this.accountDao.findAll(example);
-        //accountDAOS =  accountRepository.findByUserDAO(userDAO.getId());
         accountDAOS =  this.accountRepository.findByUserDAO(userDAO);
 
         accountDAOS.forEach((accountItem) -> {

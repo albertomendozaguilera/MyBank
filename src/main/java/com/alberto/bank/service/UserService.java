@@ -36,10 +36,8 @@ public class UserService {
 
      public UserDTO getUserById(String id) {
 
-         List<UserDao> userDAOS;
-         List<UserDTO> userDTOList = new ArrayList();
-         UserDTO user = new UserDTO();
-         UserDao userDao = new UserDao();
+         UserDTO user;
+         UserDao userDao;
 
          userDao = this.userRepository.findById(id);
          user = userToUserDTOConverter.populate(userDao);
@@ -47,7 +45,7 @@ public class UserService {
          return user;
      }
  
-     public UserDTO addUser(UserDTO userDTO) {
-         return userToUserDTOConverter.populate(userRepository.save(userDTOToUserConverter.populate(userDTO)));
+     public void addUser(UserDTO userDTO) {
+        userRepository.save(userDTOToUserConverter.populate(userDTO));
      }
 }

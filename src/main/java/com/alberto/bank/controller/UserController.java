@@ -26,7 +26,7 @@ public class UserController {
      @RequestMapping(value = "/adduser", method = RequestMethod.POST,
              consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
      @ResponseBody()
-     public UserDTO addNewUser(@RequestBody UserDTO userDTO) {
-         return this.userService.addUser(userDTO);
+     public void addNewUser(@RequestBody UserDTO userDTO) {
+          userService.addUser(userDTO);
      }
 }

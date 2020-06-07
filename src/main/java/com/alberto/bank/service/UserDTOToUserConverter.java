@@ -1,27 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.alberto.bank.service;
 
 import com.alberto.bank.dto.UserDTO;
-import com.alberto.bank.model.User;
+import com.alberto.bank.dao.UserDao;
 import org.springframework.stereotype.Service;
 
 /**
  *
- * @author Sergio
+ * @author wutuf
  */
 @Service
 public class UserDTOToUserConverter {
-    public User populate(UserDTO userDTO){
-        User user = new User();
-        user.setId(userDTO.getId());
-        user.setName(userDTO.getName());
-        user.setEmail(userDTO.getEmail());
-        user.setBlacklist(isBlacklisted(userDTO.isBlacklist()));
-        return user;
+    public UserDao populate(UserDTO userDTO){
+        UserDao userDAO = new UserDao();
+        userDAO.setId(userDTO.getId());
+        userDAO.setName(userDTO.getName());
+        userDAO.setEmail(userDTO.getEmail());
+        userDAO.setBlacklist(isBlacklisted(userDTO.isBlacklist()));
+        return userDAO;
     } 
     
     private String isBlacklisted(boolean blacklist){

@@ -1,30 +1,60 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.alberto.bank.service;
 
+import com.alberto.bank.dao.AccountDAO;
+import com.alberto.bank.dto.AccountDTO;
 import com.alberto.bank.dto.UserDTO;
-import com.alberto.bank.model.User;
+import com.alberto.bank.dao.UserDao;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
- * @author Sergio
+ * @author wutuf
  */
 @Service
 public class UserToUserDTOConverter {
-    
-    public UserDTO populate(User user){
-        UserDTO userDTO = new UserDTO();
-        userDTO.setId(user.getId());
-        userDTO.setName(user.getName());
-        userDTO.setEmail(user.getEmail());
-        userDTO.setBlacklist(isBlacklisted(user.getBlacklist()));
+    Logger logger = LoggerFactory.getLogger(UserToUserDTOConverter.class.getName());
+
+    @Autowired AccountToAccountDTOConverter accountToAccountDTOConverter;
+
+    public UserDTO populate(UserDao userDAO){
+        UserDTO userDTO = getPopulatedUserDTO(userDAO);
+        try{
+            userDTO.setAccountsList(convertAccountDAOsToAccountDTOs(userDAO.getAccountDAOS()));
+            logger.debug("sacando cuentas: "+ userDTO.getAccountsList().get(0).toString());
+        }catch (NullPointerException e){
+            logger.error("Error retrieving user accounts", e);
+        }
         return userDTO;
-    } 
-    
+    }
+
+    public UserDTO userToUserDTO(UserDao userDAO){
+        UserDTO userDTO = getPopulatedUserDTO(userDAO);
+        return userDTO;
+    }
+
+    private UserDTO getPopulatedUserDTO(UserDao userDAO) {
+        UserDTO userDTO = new UserDTO();
+        userDTO.setId(userDAO.getId());
+        userDTO.setName(userDAO.getName());
+        userDTO.setEmail(userDAO.getEmail());
+        userDTO.setBlacklist(isBlacklisted(userDAO.getBlacklist()));
+        return userDTO;
+    }
+
+    private List<AccountDTO> convertAccountDAOsToAccountDTOs(List<AccountDAO> list) {
+        List<AccountDTO> accountDtoList = new ArrayList();
+        for (AccountDAO aDao : list) {
+            accountDtoList.add(accountToAccountDTOConverter.accountToAccountDTO(aDao));
+        }
+        return accountDtoList;
+    }
+
     private boolean isBlacklisted(String blacklist){
         return !blacklist.equals("0");
     }

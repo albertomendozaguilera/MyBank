@@ -1,8 +1,8 @@
 package com.alberto.bank.service;
 
-import com.alberto.bank.dao.UserDao;
+import com.alberto.bank.repository.UserRepository;
 import com.alberto.bank.dto.UserDTO;
-import com.alberto.bank.model.User;
+import com.alberto.bank.dao.UserDao;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
     
     @Autowired
-     UserDao userDao;
+    UserRepository userRepository;
     
     @Autowired
     UserToUserDTOConverter userToUserDTOConverter;
@@ -26,14 +26,26 @@ public class UserService {
     
     public List<UserDTO> getAllUsers() {
         List<UserDTO> userDTOList = new ArrayList();
-        List<User> users = this.userDao.findAll();
-        users.forEach((user) -> {
+        List<UserDao> userDaos = this.userRepository.findAll();
+        userDaos.forEach((user) -> {
             userDTOList.add(userToUserDTOConverter.populate(user));
         });
-         return userDTOList;
+        return userDTOList;
+     }
+
+
+     public UserDTO getUserById(String id) {
+
+         UserDTO user;
+         UserDao userDao;
+
+         userDao = this.userRepository.findById(id);
+         user = userToUserDTOConverter.populate(userDao);
+
+         return user;
      }
  
-     public UserDTO addUser(UserDTO userDTO) {
-         return userToUserDTOConverter.populate(userDao.save(userDTOToUserConverter.populate(userDTO)));
+     public void addUser(UserDTO userDTO) {
+        userRepository.save(userDTOToUserConverter.populate(userDTO));
      }
 }

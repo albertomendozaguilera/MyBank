@@ -2,7 +2,7 @@ package com.alberto.bank.service;
 
 import com.alberto.bank.repository.UserRepository;
 import com.alberto.bank.dto.UserDTO;
-import com.alberto.bank.dao.UserDao;
+import com.alberto.bank.dao.UserDAO;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class UserService {
     
     public List<UserDTO> getAllUsers() {
         List<UserDTO> userDTOList = new ArrayList();
-        List<UserDao> userDaos = this.userRepository.findAll();
+        List<UserDAO> userDaos = this.userRepository.findAll();
         userDaos.forEach((user) -> {
             userDTOList.add(userToUserDTOConverter.populate(user));
         });
@@ -37,7 +37,7 @@ public class UserService {
      public UserDTO getUserById(String id) {
 
          UserDTO user;
-         UserDao userDao;
+         UserDAO userDao;
 
          userDao = this.userRepository.findById(id);
          user = userToUserDTOConverter.populate(userDao);

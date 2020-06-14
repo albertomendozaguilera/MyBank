@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "USERS")
-public class UserDao implements Serializable {
+public class UserDAO implements Serializable {
 
     @Column(name = "ID")
     @Id

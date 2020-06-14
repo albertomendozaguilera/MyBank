@@ -4,7 +4,7 @@ import com.alberto.bank.dao.AccountDAO;
 
 import java.util.List;
 
-import com.alberto.bank.dao.UserDao;
+import com.alberto.bank.dao.UserDAO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,5 +14,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface AccountRepository extends JpaRepository<AccountDAO, Integer>{
-    List<AccountDAO> findByUserDAO(UserDao userId);
+    List<AccountDAO> findByUserDAO(UserDAO userId);
 }

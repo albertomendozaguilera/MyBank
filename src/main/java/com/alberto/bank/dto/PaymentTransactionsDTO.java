@@ -1,15 +1,13 @@
 package com.alberto.bank.dto;
 
-import java.sql.Date;
-
 /**
  *
  * @author wutuf
  */
 public class PaymentTransactionsDTO {
     
-    private String id;
-    private AccountDTO iban;
+    private int id;
+    private AccountDTO accountDTO;
     private double quantity;
     private String concept;
     private String datetime;
@@ -17,20 +15,20 @@ public class PaymentTransactionsDTO {
     private String originAccount;
     private String beneficiary;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public AccountDTO getIban() {
-        return iban;
+    public AccountDTO getAccountDTO() {
+        return accountDTO;
     }
 
-    public void setIban(AccountDTO iban) {
-        this.iban = iban;
+    public void setAccountDTO(AccountDTO accountDTO) {
+        this.accountDTO = accountDTO;
     }
 
     public double getQuantity() {

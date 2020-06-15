@@ -25,7 +25,7 @@ import java.util.List;
 
         //loanDTO.setAccountDTO(accountToAccountDTOConverter.accountToAccountDTO(loanDAO.getAccountDAO()));
         populateFields(loanDAO, loanDTO);
-        loanDTO.setReceiptsList(convertReceiptDAOsToReceiptDTOs(loanDAO.getReceiptDAOS()));
+        //loanDTO.setReceiptsList(convertReceiptDAOsToReceiptDTOs(loanDAO.getReceiptDAOS()));
 
         return loanDTO;
     }

@@ -10,6 +10,7 @@ public class LoanDAO implements Serializable {
 
     @Column(name = "LOAN_NUM")
     @Id
+    @GeneratedValue
     private int loanNum;
 
     @ManyToOne(fetch = FetchType.LAZY)

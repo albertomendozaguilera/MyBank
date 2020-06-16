@@ -18,7 +18,7 @@ public class PTransactiosToPTransactionsDTOConverter {
     public PaymentTransactionsDTO populate(PaymentTransactionsDAO pTransactions){
         PaymentTransactionsDTO pTransactionsDTO = new PaymentTransactionsDTO();
         pTransactionsDTO.setId(pTransactions.getId());
-        pTransactionsDTO.setIban(accountToAccountDTOConverter.populate(pTransactions.getAccountDao()));
+        pTransactionsDTO.setAccountDTO(accountToAccountDTOConverter.populate(pTransactions.getAccountDao()));
         populateFields(pTransactions, pTransactionsDTO);
         return pTransactionsDTO;
     }
@@ -26,7 +26,7 @@ public class PTransactiosToPTransactionsDTOConverter {
     public PaymentTransactionsDTO transactionsToTransactiosDTO(PaymentTransactionsDAO pTransactions){
         PaymentTransactionsDTO pTransactionsDTO = new PaymentTransactionsDTO();
         pTransactionsDTO.setId(pTransactions.getId());
-        //pTransactionsDTO.setIban(accountToAccountDTOConverter.populate(pTransactions.getAccountDao()));
+        //pTransactionsDTO.setAccountDTO(accountToAccountDTOConverter.populate(pTransactions.getAccountDao()));
         populateFields(pTransactions, pTransactionsDTO);
         return pTransactionsDTO;
     }

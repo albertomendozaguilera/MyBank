@@ -45,4 +45,8 @@ public class PaymentTransactionsService {
     }
 
 
+    public void addTransaction(PaymentTransactionsDTO transactionDTO) {
+        transactionsRepository.save(pTransactionsDTOToPTransactionsConverter.populate(transactionDTO));
+    }
+
 }

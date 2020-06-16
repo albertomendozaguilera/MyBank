@@ -1,7 +1,7 @@
 package com.alberto.bank.dao;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.*;
 
 /**
@@ -15,7 +15,8 @@ public class PaymentTransactionsDAO implements Serializable{
         
     @Column(name = "ID")
     @Id
-    private String id;
+    @GeneratedValue
+    private int id;
     
     @ManyToOne (fetch = FetchType.LAZY)//TODO
     @JoinColumn(name = "ACCOUNT_IBAN", nullable = false)
@@ -40,11 +41,11 @@ public class PaymentTransactionsDAO implements Serializable{
     private String beneficiary;
 
     
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -52,8 +53,8 @@ public class PaymentTransactionsDAO implements Serializable{
         return accountDAO;
     }
 
-    public void setAccountDao(AccountDAO iban) {
-        this.accountDAO = iban;
+    public void setAccountDao(AccountDAO accountDAO) {
+        this.accountDAO = accountDAO;
     }
 
     public double getQuantity() {

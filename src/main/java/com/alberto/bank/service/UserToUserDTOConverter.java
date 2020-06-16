@@ -3,7 +3,7 @@ package com.alberto.bank.service;
 import com.alberto.bank.dao.AccountDAO;
 import com.alberto.bank.dto.AccountDTO;
 import com.alberto.bank.dto.UserDTO;
-import com.alberto.bank.dao.UserDao;
+import com.alberto.bank.dao.UserDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class UserToUserDTOConverter {
 
     @Autowired AccountToAccountDTOConverter accountToAccountDTOConverter;
 
-    public UserDTO populate(UserDao userDAO){
+    public UserDTO populate(UserDAO userDAO){
         UserDTO userDTO = getPopulatedUserDTO(userDAO);
         try{
             userDTO.setAccountsList(convertAccountDAOsToAccountDTOs(userDAO.getAccountDAOS()));
@@ -33,12 +33,12 @@ public class UserToUserDTOConverter {
         return userDTO;
     }
 
-    public UserDTO userToUserDTO(UserDao userDAO){
+    public UserDTO userToUserDTO(UserDAO userDAO){
         UserDTO userDTO = getPopulatedUserDTO(userDAO);
         return userDTO;
     }
 
-    private UserDTO getPopulatedUserDTO(UserDao userDAO) {
+    private UserDTO getPopulatedUserDTO(UserDAO userDAO) {
         UserDTO userDTO = new UserDTO();
         userDTO.setId(userDAO.getId());
         userDTO.setName(userDAO.getName());

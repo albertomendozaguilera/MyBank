@@ -14,6 +14,7 @@ public class AccountDTO {
     private String name;
     private double balance;
     private List<PaymentTransactionsDTO> transactionsDTOList;
+    private List<LoanDTO> loansDTOList;
 
     
     public UserDTO getUserDTO() {
@@ -54,5 +55,13 @@ public class AccountDTO {
 
     public void setTransactionsDTOList(List<PaymentTransactionsDTO> transactionsDTOList) {
         this.transactionsDTOList = transactionsDTOList;
+    }
+
+    public List<LoanDTO> getLoansDTOList() {
+        return loansDTOList;
+    }
+
+    public void setLoansDTOList(List<LoanDTO> loansDTOList) {
+        this.loansDTOList = loansDTOList;
     }
 }

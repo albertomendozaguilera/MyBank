@@ -3,12 +3,11 @@ package com.alberto.bank.service;
 import com.alberto.bank.repository.AccountRepository;
 import com.alberto.bank.dto.AccountDTO;
 import com.alberto.bank.dao.AccountDAO;
-import com.alberto.bank.dao.UserDao;
+import com.alberto.bank.dao.UserDAO;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 /**
@@ -40,7 +39,7 @@ public class AccountService {
         List<AccountDAO> accountDAOS;
         List<AccountDTO> accountsList = new ArrayList();
 
-        UserDao userDAO = new UserDao();
+        UserDAO userDAO = new UserDAO();
         userDAO.setId(userId);
 
         accountDAOS =  this.accountRepository.findByUserDAO(userDAO);

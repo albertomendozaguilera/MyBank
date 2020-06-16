@@ -18,7 +18,7 @@ import javax.persistence.*;
 public class AccountDAO implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USERID")
-    private UserDao userDAO;
+    private UserDAO userDAO;
     
     @Column(name = "IBAN")
     @Id
@@ -33,6 +33,10 @@ public class AccountDAO implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "accountDAO")
     private List<PaymentTransactionsDAO> transactionsDAOS;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "accountDAO")
+    private List<LoanDAO> loanDAOS;
+
+
     public String getIban() {
         return iban;
     }
@@ -41,11 +45,11 @@ public class AccountDAO implements Serializable {
         this.iban = iban;
     }
 
-    public UserDao getUserDAO() {
+    public UserDAO getUserDAO() {
         return userDAO;
     }
 
-    public void setUserDAO(UserDao userDAO) {
+    public void setUserDAO(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
 
@@ -68,4 +72,8 @@ public class AccountDAO implements Serializable {
     public List<PaymentTransactionsDAO> getTransactionsDAOS() { return transactionsDAOS; }
 
     public void setTransactionsDAOS(List<PaymentTransactionsDAO> transactionsDAOS) { this.transactionsDAOS = transactionsDAOS; }
+
+    public List<LoanDAO> getLoanDAOS() { return loanDAOS; }
+
+    public void setLoanDAOS(List<LoanDAO> loanDAOS) { this.loanDAOS = loanDAOS;}
 }

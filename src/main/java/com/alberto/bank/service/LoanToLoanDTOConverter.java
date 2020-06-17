@@ -23,9 +23,8 @@ import java.util.List;
     public LoanDTO populate (LoanDAO loanDAO){
         LoanDTO loanDTO = new LoanDTO();
 
-        //loanDTO.setAccountDTO(accountToAccountDTOConverter.accountToAccountDTO(loanDAO.getAccountDAO()));
+        loanDTO.setAccountDTO(accountToAccountDTOConverter.accountToAccountDTO(loanDAO.getAccountDAO()));
         populateFields(loanDAO, loanDTO);
-        //loanDTO.setReceiptsList(convertReceiptDAOsToReceiptDTOs(loanDAO.getReceiptDAOS()));
 
         return loanDTO;
     }
@@ -45,12 +44,13 @@ import java.util.List;
         loanDTO.setPaymentWay(loanDAO.getPaymentWay());
         loanDTO.setQuantity(loanDAO.getQuantity());
         loanDTO.setReceiptQuantity(loanDAO.getReceiptQuantity());
+        loanDTO.setReceiptsList(convertReceiptDAOsToReceiptDTOs(loanDAO.getReceiptDAOS()));
     }
 
     private List<ReceiptDTO> convertReceiptDAOsToReceiptDTOs(List<ReceiptDAO> receiptDAOS){
         List<ReceiptDTO> receiptDTOS = new ArrayList();
         for (ReceiptDAO receiptDAO : receiptDAOS){
-            receiptDTOS.add(receiptToReceiptDTOConverter.pupulate(receiptDAO));
+            receiptDTOS.add(receiptToReceiptDTOConverter.receiptToReceiptDTO(receiptDAO));
         }
         return receiptDTOS;
     }

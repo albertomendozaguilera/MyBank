@@ -60,7 +60,7 @@ public class AccountToAccountDTOConverter {
     private List<LoanDTO> convertLoanDAOsToLoanDTO(List<LoanDAO> list) {
         List<LoanDTO> loanDtoList = new ArrayList();
         for (LoanDAO loanDao : list) {
-            loanDtoList.add(loanToLoanDTOConverte.populate(loanDao));
+            loanDtoList.add(loanToLoanDTOConverte.loanToLoanDTO(loanDao));
         }
         return loanDtoList;
     }

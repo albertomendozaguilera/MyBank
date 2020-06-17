@@ -49,4 +49,8 @@ public class PaymentTransactionsService {
         transactionsRepository.save(pTransactionsDTOToPTransactionsConverter.populate(transactionDTO));
     }
 
+    public void addTransactionByProcedure(PaymentTransactionsDTO transactionDTO) {
+        transactionsRepository.insertPaymentTransaction(transactionDTO.getOriginAccount(), transactionDTO.getQuantity(), transactionDTO.getConcept(), transactionDTO.getDestinyAccount(), transactionDTO.getBeneficiary());
+    }
+
 }

@@ -10,8 +10,8 @@ public class ReceiptDAO implements Serializable {
     @JoinColumn(name = "LOAN_NUM", nullable = false)
     private LoanDAO loanDAO;
 
-    @Column(name = "RECEIPT_NUM", nullable = false)
     @Id
+    @Column(name = "RECEIPT_NUM", nullable = false)
     private int receiptNum;
 
     @Column(name = "RECEIPT_DATE", nullable = false)

@@ -18,7 +18,7 @@ public class PaymentTransactionsDAO implements Serializable{
     @GeneratedValue
     private int id;
     
-    @ManyToOne (fetch = FetchType.LAZY)//TODO
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "ACCOUNT_IBAN", nullable = false)
     private AccountDAO accountDAO;
     

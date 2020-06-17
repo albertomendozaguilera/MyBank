@@ -39,8 +39,8 @@ public class LoanService {
         return loansList;
     }
 
-    public LoanDTO addLoan(LoanDTO loanDTO) {
-        return loanToLoanDTOConverter.populate(loanRepository.save(loanDTOToLoanConverter.populate(loanDTO)));
+    public void addLoan(LoanDTO loanDTO) {
+        loanRepository.save(loanDTOToLoanConverter.populate(loanDTO));
     }
 
 }

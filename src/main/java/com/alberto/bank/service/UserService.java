@@ -40,7 +40,7 @@ public class UserService {
          UserDAO userDao;
 
          userDao = this.userRepository.findById(id);
-         user = userToUserDTOConverter.populate(userDao);
+         user = userToUserDTOConverter.userToUserDTO(userDao);
 
          return user;
      }

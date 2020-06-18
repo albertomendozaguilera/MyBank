@@ -44,6 +44,7 @@ public class UserToUserDTOConverter {
         userDTO.setName(userDAO.getName());
         userDTO.setEmail(userDAO.getEmail());
         userDTO.setBlacklist(isBlacklisted(userDAO.getBlacklist()));
+        userDTO.setAccountsList(convertAccountDAOsToAccountDTOs(userDAO.getAccountDAOS()));
         return userDTO;
     }
 
